@@ -1,0 +1,58 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Service/CustomerService.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1651557253093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651557258317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,10 @@\n \t\r\n \tpublic Customer updateCustomer(Customer customer) {\r\n \t\treturn customerRespository.findById(customer.getId()).map(existedCustomer -> {\r\n \t\t\texistedCustomer.setF_name(customer.getF_name());\r\n-\t\t\t\r\n+\t\t\texistedCustomer.setL_name(customer.getL_name());\r\n+\t\t\texistedCustomer.setEmail(customer.getEmail());\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557266233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,10 @@\n \t\treturn customerRespository.findById(customer.getId()).map(existedCustomer -> {\r\n \t\t\texistedCustomer.setF_name(customer.getF_name());\r\n \t\t\texistedCustomer.setL_name(customer.getL_name());\r\n \t\t\texistedCustomer.setEmail(customer.getEmail());\r\n+\t\t\texistedCustomer.setPhone(customer.getPhone());\r\n+\t\t\t\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557272108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,9 @@\n \t\t\texistedCustomer.setF_name(customer.getF_name());\r\n \t\t\texistedCustomer.setL_name(customer.getL_name());\r\n \t\t\texistedCustomer.setEmail(customer.getEmail());\r\n \t\t\texistedCustomer.setPhone(customer.getPhone());\r\n-\t\t\t\r\n+\t\t\texistedCustomer\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557288050,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,10 @@\n \t\t\texistedCustomer.setF_name(customer.getF_name());\r\n \t\t\texistedCustomer.setL_name(customer.getL_name());\r\n \t\t\texistedCustomer.setEmail(customer.getEmail());\r\n \t\t\texistedCustomer.setPhone(customer.getPhone());\r\n-\t\t\texistedCustomer\r\n+\t\t\texistedCustomer.setAddress(customer.getAddress());\r\n+\t\t\t\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557294270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,9 @@\n \t\t\texistedCustomer.setL_name(customer.getL_name());\r\n \t\t\texistedCustomer.setEmail(customer.getEmail());\r\n \t\t\texistedCustomer.setPhone(customer.getPhone());\r\n \t\t\texistedCustomer.setAddress(customer.getAddress());\r\n+\t\t\texistedCustomer.setCity(customer.getCity());\r\n \t\t\t\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n"
+                },
+                {
+                    "date": 1651557299838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,10 @@\n \t\t\texistedCustomer.setEmail(customer.getEmail());\r\n \t\t\texistedCustomer.setPhone(customer.getPhone());\r\n \t\t\texistedCustomer.setAddress(customer.getAddress());\r\n \t\t\texistedCustomer.setCity(customer.getCity());\r\n+\t\t\texistedCustomer.setZip(customer.getZip());\r\n+\t\t\texistedCustomer.setCountry(customer.getCountry());\r\n \t\t\t\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n"
+                },
+                {
+                    "date": 1651557306250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \t\t\texistedCustomer.setAddress(customer.getAddress());\r\n \t\t\texistedCustomer.setCity(customer.getCity());\r\n \t\t\texistedCustomer.setZip(customer.getZip());\r\n \t\t\texistedCustomer.setCountry(customer.getCountry());\r\n-\t\t\t\r\n+\t\t\tex\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557311985,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \t\t\texistedCustomer.setAddress(customer.getAddress());\r\n \t\t\texistedCustomer.setCity(customer.getCity());\r\n \t\t\texistedCustomer.setZip(customer.getZip());\r\n \t\t\texistedCustomer.setCountry(customer.getCountry());\r\n-\t\t\tex\r\n+\t\t\texistedCustomer.setPa\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557327786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,10 @@\n \t\t\texistedCustomer.setAddress(customer.getAddress());\r\n \t\t\texistedCustomer.setCity(customer.getCity());\r\n \t\t\texistedCustomer.setZip(customer.getZip());\r\n \t\t\texistedCustomer.setCountry(customer.getCountry());\r\n-\t\t\texistedCustomer.setPa\r\n+\t\t\texistedCustomer.setPassword(customer.getPassword());\r\n+\t\t\texistedCustomer\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                },
+                {
+                    "date": 1651557335658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,10 @@\n \t\t\texistedCustomer.setCity(customer.getCity());\r\n \t\t\texistedCustomer.setZip(customer.getZip());\r\n \t\t\texistedCustomer.setCountry(customer.getCountry());\r\n \t\t\texistedCustomer.setPassword(customer.getPassword());\r\n-\t\t\texistedCustomer\r\n+\t\t\texistedCustomer.setGender(customer.getGender());\r\n+\t\t\t\r\n \t\t\treturn customerRespository.save(existedCustomer);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn customerRespository.save(customer);\r\n \t\t});\r\n"
+                }
+            ],
+            "date": 1651557253093,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Service;\r\n\r\nimport io.sfer.xxx.Model.Customer;\r\nimport io.sfer.xxx.Respository.CustomerRespository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class CustomerService {\r\n\t\r\n\t@Autowired\r\n\tCustomerRespository customerRespository;\r\n\t\r\n\tpublic List<Customer> getAllCustomer() {\r\n\t\treturn customerRespository.findAll();\r\n\t}\r\n\t\r\n\tpublic Customer getCustomerById(Integer id) {\r\n\t\treturn customerRespository.findById(id).get();\r\n\t}\r\n\t\r\n\tpublic Customer addCustomer( Customer customer) {\r\n\t\treturn customerRespository.save(customer);\r\n\t}\r\n\t\r\n\tpublic void deleteCustomer(Integer id) {\r\n\t\tcustomerRespository.deleteById(id);\r\n\t}\r\n\t\r\n\tpublic Customer updateCustomer(Customer customer) {\r\n\t\treturn customerRespository.findById(customer.getId()).map(existedCustomer -> {\r\n\t\t\texistedCustomer.setF_name(customer.getF_name());\r\n\t\t\t\r\n\t\t\treturn customerRespository.save(existedCustomer);\r\n\t\t}).orElseGet(() -> {\r\n\t\t\treturn customerRespository.save(customer);\r\n\t\t});\r\n\t}\r\n}\r\n"
+        }
+    ]
+}

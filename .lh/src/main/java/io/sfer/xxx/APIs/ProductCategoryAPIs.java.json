@@ -1,0 +1,58 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/APIs/ProductCategoryAPIs.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1651513362443,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651515899899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,5 +16,7 @@\n   @GetMapping(\"/apis/productCategories\")\r\n   public List<ProductCategory> getAllProductCategories() {\r\n     return productCategoryService.getAllProductCategory();\r\n   }\r\n+  \r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651515905893,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,7 @@\n   public List<ProductCategory> getAllProductCategories() {\r\n     return productCategoryService.getAllProductCategory();\r\n   }\r\n   \r\n+  @GetMapping(\"/apis/productCategories/{id}\")\r\n   \r\n }\r\n"
+                },
+                {
+                    "date": 1651515922438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,6 +18,10 @@\n     return productCategoryService.getAllProductCategory();\r\n   }\r\n   \r\n   @GetMapping(\"/apis/productCategories/{id}\")\r\n+  public ProductCategory getProductCategoryById(Integer id) {\r\n+    return productCategoryService.getProductCategoryById(id);\r\n+  }\r\n+\r\n   \r\n }\r\n"
+                },
+                {
+                    "date": 1651515933019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n   public ProductCategory getProductCategoryById(Integer id) {\r\n     return productCategoryService.getProductCategoryById(id);\r\n   }\r\n \r\n-  \r\n+  @Po\r\n }\r\n"
+                },
+                {
+                    "date": 1651515940831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,7 @@\n   public ProductCategory getProductCategoryById(Integer id) {\r\n     return productCategoryService.getProductCategoryById(id);\r\n   }\r\n \r\n-  @Po\r\n+  @PostMapping(\"/apis/productCategories\")\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651515976477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n import io.sfer.xxx.Service.ProductCategoryService;\r\n import java.util.List;\r\n import org.springframework.beans.factory.annotation.Autowired;\r\n import org.springframework.web.bind.annotation.GetMapping;\r\n+import org.springframework.web.bind.annotation.PostMapping;\r\n import org.springframework.web.bind.annotation.RestController;\r\n \r\n @RestController\r\n public class ProductCategoryAPIs {\r\n@@ -23,6 +24,10 @@\n     return productCategoryService.getProductCategoryById(id);\r\n   }\r\n \r\n   @PostMapping(\"/apis/productCategories\")\r\n+  public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n+    return productCategoryService.addProductCategory(productCategory);\r\n+  }\r\n+\r\n   \r\n }\r\n"
+                },
+                {
+                    "date": 1651516003820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,6 +28,6 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryService.addProductCategory(productCategory);\r\n   }\r\n \r\n-  \r\n+  @De\r\n }\r\n"
+                },
+                {
+                    "date": 1651516009547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,6 +28,9 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryService.addProductCategory(productCategory);\r\n   }\r\n \r\n-  @De\r\n+  @DeleteMapping(\"/apis/productCategories/{id}\")\r\n+  public void deleteProductCategory(Integer id) {\r\n+    productCategoryService.deleteProductCategory(id);\r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1651516088233,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,9 @@\n import io.sfer.xxx.Model.ProductCategory;\r\n import io.sfer.xxx.Service.ProductCategoryService;\r\n import java.util.List;\r\n import org.springframework.beans.factory.annotation.Autowired;\r\n-import org.springframework.web.bind.annotation.GetMapping;\r\n-import org.springframework.web.bind.annotation.PostMapping;\r\n-import org.springframework.web.bind.annotation.RestController;\r\n+import org.springframework.web.bind.annotation.*;\r\n \r\n @RestController\r\n public class ProductCategoryAPIs {\r\n \r\n@@ -19,9 +17,9 @@\n     return productCategoryService.getAllProductCategory();\r\n   }\r\n   \r\n   @GetMapping(\"/apis/productCategories/{id}\")\r\n-  public ProductCategory getProductCategoryById(Integer id) {\r\n+  public ProductCategory getProductCategoryById(@PathVariable Integer id) {\r\n     return productCategoryService.getProductCategoryById(id);\r\n   }\r\n \r\n   @PostMapping(\"/apis/productCategories\")\r\n@@ -29,8 +27,10 @@\n     return productCategoryService.addProductCategory(productCategory);\r\n   }\r\n \r\n   @DeleteMapping(\"/apis/productCategories/{id}\")\r\n-  public void deleteProductCategory(Integer id) {\r\n+  public void deleteProductCategory(@PathVariable Integer id) {\r\n     productCategoryService.deleteProductCategory(id);\r\n   }\r\n+  \r\n+  @PutMapping(\"\")\r\n }\r\n"
+                },
+                {
+                    "date": 1651516496072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n   @GetMapping(\"/apis/productCategories\")\r\n   public List<ProductCategory> getAllProductCategories() {\r\n     return productCategoryService.getAllProductCategory();\r\n   }\r\n-  \r\n+\r\n   @GetMapping(\"/apis/productCategories/{id}\")\r\n   public ProductCategory getProductCategoryById(@PathVariable Integer id) {\r\n     return productCategoryService.getProductCategoryById(id);\r\n   }\r\n@@ -30,7 +30,13 @@\n   @DeleteMapping(\"/apis/productCategories/{id}\")\r\n   public void deleteProductCategory(@PathVariable Integer id) {\r\n     productCategoryService.deleteProductCategory(id);\r\n   }\r\n-  \r\n-  @PutMapping(\"\")\r\n+\r\n+  @PutMapping(\"/apis/productCategories/{id}\")\r\n+  public ProductCategory updateProductCategory(\r\n+    @RequestBody ProductCategory productCategory,\r\n+    @PathVariable Integer id\r\n+  ) {\r\n+    return productCategoryService.updateProductCategory(productCategory);\r\n+  }\r\n }\r\n"
+                }
+            ],
+            "date": 1651513362443,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.APIs;\r\n\r\nimport io.sfer.xxx.Model.ProductCategory;\r\nimport io.sfer.xxx.Service.ProductCategoryService;\r\nimport java.util.List;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.GetMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\n\r\n@RestController\r\npublic class ProductCategoryAPIs {\r\n\r\n  @Autowired\r\n  ProductCategoryService productCategoryService;\r\n\r\n  @GetMapping(\"/apis/productCategories\")\r\n  public List<ProductCategory> getAllProductCategories() {\r\n    return productCategoryService.getAllProductCategory();\r\n  }\r\n}\r\n"
+        }
+    ]
+}

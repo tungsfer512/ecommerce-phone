@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/APIs/CategoryAPIs.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1651511394431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651511806207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n         return categoryService.getAllCategory();\r\n     }\r\n \r\n     @PostMapping(\"/apis/categories/add\")\r\n-    Category addCategory(Category category) {\r\n+    Category addCategory( Category category) {\r\n         return categoryService.addCategory(category);\r\n     }\r\n \r\n     @GetMapping(\"/apis/category/{code}&{id}\")\r\n"
+                },
+                {
+                    "date": 1651511812579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n         return categoryService.getAllCategory();\r\n     }\r\n \r\n     @PostMapping(\"/apis/categories/add\")\r\n-    Category addCategory( Category category) {\r\n+    Category addCategory(@Requs Category category) {\r\n         return categoryService.addCategory(category);\r\n     }\r\n \r\n     @GetMapping(\"/apis/category/{code}&{id}\")\r\n"
+                },
+                {
+                    "date": 1651513358812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,35 +1,42 @@\n package io.sfer.xxx.APIs;\r\n \r\n import io.sfer.xxx.Model.Category;\r\n import io.sfer.xxx.Service.CategoryService;\r\n+import java.util.List;\r\n import org.springframework.beans.factory.annotation.Autowired;\r\n import org.springframework.web.bind.annotation.*;\r\n \r\n-import java.util.List;\r\n-\r\n @RestController\r\n public class CategoryAPIs {\r\n \r\n-    @Autowired\r\n-    CategoryService categoryService;\r\n+  @Autowired\r\n+  CategoryService categoryService;\r\n \r\n-    @GetMapping(\"/apis/categories\")\r\n-    List<Category> getAllCategories() {\r\n-        return categoryService.getAllCategory();\r\n-    }\r\n+  @GetMapping(\"/apis/categories\")\r\n+  List<Category> getAllCategories() {\r\n+    return categoryService.getAllCategory();\r\n+  }\r\n \r\n-    @PostMapping(\"/apis/categories/add\")\r\n-    Category addCategory(@Requs Category category) {\r\n-        return categoryService.addCategory(category);\r\n-    }\r\n+  @PostMapping(\"/apis/categories\")\r\n+  Category addCategory(@RequestBody Category category) {\r\n+    return categoryService.addCategory(category);\r\n+  }\r\n \r\n-    @GetMapping(\"/apis/category/{code}&{id}\")\r\n-    Category getCategoryByIdAndCode(@PathVariable String code, @PathVariable Integer id) {\r\n-        return categoryService.getCategoryById(id);\r\n-    }\r\n+  @GetMapping(\"/apis/category/{id}\")\r\n+  Category getCategoryByIdAndCode(@PathVariable Integer id) {\r\n+    return categoryService.getCategoryById(id);\r\n+  }\r\n \r\n-    @DeleteMapping(\"/apis/category/{code}&{id}\")\r\n-    void deleteCategoryByIdAndCode(@PathVariable String code, @PathVariable Integer id) {\r\n-        categoryService.deleteCategoryById(id);\r\n-    }\r\n+  @DeleteMapping(\"/apis/category/{id}\")\r\n+  void deleteCategoryByIdAndCode(@PathVariable Integer id) {\r\n+    categoryService.deleteCategoryById(id);\r\n+  }\r\n+\r\n+  @PutMapping(\"/apis/category/{id}\")\r\n+  Category updateCategoryById(\r\n+    @RequestBody Category category,\r\n+    @PathVariable Integer id\r\n+  ) {\r\n+    return categoryService.updateCategory(category);\r\n+  }\r\n }\r\n"
+                }
+            ],
+            "date": 1651511394431,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.APIs;\r\n\r\nimport io.sfer.xxx.Model.Category;\r\nimport io.sfer.xxx.Service.CategoryService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\n\r\n@RestController\r\npublic class CategoryAPIs {\r\n\r\n    @Autowired\r\n    CategoryService categoryService;\r\n\r\n    @GetMapping(\"/apis/categories\")\r\n    List<Category> getAllCategories() {\r\n        return categoryService.getAllCategory();\r\n    }\r\n\r\n    @PostMapping(\"/apis/categories/add\")\r\n    Category addCategory(Category category) {\r\n        return categoryService.addCategory(category);\r\n    }\r\n\r\n    @GetMapping(\"/apis/category/{code}&{id}\")\r\n    Category getCategoryByIdAndCode(@PathVariable String code, @PathVariable Integer id) {\r\n        return categoryService.getCategoryById(id);\r\n    }\r\n\r\n    @DeleteMapping(\"/apis/category/{code}&{id}\")\r\n    void deleteCategoryByIdAndCode(@PathVariable String code, @PathVariable Integer id) {\r\n        categoryService.deleteCategoryById(id);\r\n    }\r\n}\r\n"
+        }
+    ]
+}

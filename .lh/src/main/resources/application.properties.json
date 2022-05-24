@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/main/resources/application.properties",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1651502511486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1651502511486,
+            "name": "Commit-0",
+            "content": "\nspring.jpa.hibernate.ddl-auto=update\nspring.datasource.url=jdbc:mysql://127.0.0.1:3306/xxxdb\nspring.datasource.username=root\nspring.datasource.password=tung\nspring.datasource.driver-class-name =com.mysql.cj.jdbc.Driver\nspring.jpa.show-sql=true\nspring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL8Dialect\n"
+        }
+    ]
+}

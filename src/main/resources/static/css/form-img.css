@@ -1,0 +1,29 @@
+.form-img-area {
+  width: 100%;
+  display: flex;
+  /* grid-template-columns: repeat(2, 1fr); */
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.form-img-item {
+  width: 50%;
+  /* max-width: 250px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-img-item img {
+  width: 95%;
+  object-fit: contain;
+}
+
+.edit-img {
+  width: 200px;
+}
+.edit-img img {
+  width: 100%;
+  object-fit: contain;
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Service/ProductService.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1651544202734,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651544364853,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n \t}\r\n \tpublic Product updateProduct(Product product) {\r\n \t\treturn productRespository.findById(product.getId()).map(existedProduct -> {\r\n \t\t\texistedProduct.setAuthor(product.getAuthor());\r\n+\t\t\texistedProduct.setName(product.getName());\r\n \t\t\t\r\n \t\t})\r\n \t}\r\n }\r\n"
+                },
+                {
+                    "date": 1651544372540,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n \tpublic Product updateProduct(Product product) {\r\n \t\treturn productRespository.findById(product.getId()).map(existedProduct -> {\r\n \t\t\texistedProduct.setAuthor(product.getAuthor());\r\n \t\t\texistedProduct.setName(product.getName());\r\n-\t\t\t\r\n+\t\t\texistedProduct.setPrice(product.getPrice());\r\n+\t\t\treturn productRespository.save(existedProduct);\r\n \t\t})\r\n \t}\r\n }\r\n"
+                }
+            ],
+            "date": 1651544202734,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Service;\r\n\r\nimport io.sfer.xxx.Model.Product;\r\nimport io.sfer.xxx.Respository.ProductRespository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\n\r\nimport java.util.List;\r\n\r\npublic class ProductService {\r\n\t@Autowired\r\n\tProductRespository productRespository;\r\n\t\r\n\tpublic List<Product> getAllProduct() {\r\n\t\treturn productRespository.findAll();\r\n\t}\r\n\tpublic Product getProductById(Integer id) {\r\n\t\treturn productRespository.findById(id).get();\r\n\t}\r\n\tpublic Product addProduct(Product product) {\r\n\t\treturn productRespository.save(product);\r\n\t}\r\n\tpublic void deleteProduct(Integer id) {\r\n\t\tproductRespository.deleteById(id);\r\n\t}\r\n\tpublic Product updateProduct(Product product) {\r\n\t\treturn productRespository.findById(product.getId()).map(existedProduct -> {\r\n\t\t\texistedProduct.setAuthor(product.getAuthor());\r\n\t\t\t\r\n\t\t})\r\n\t}\r\n}\r\n"
+        }
+    ]
+}

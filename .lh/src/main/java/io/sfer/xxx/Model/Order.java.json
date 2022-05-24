@@ -1,0 +1,78 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/Order.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 15,
+            "patches": [
+                {
+                    "date": 1651504365819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651504434813,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,17 @@\n \r\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n+\r\n+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n+  @JoinColumn(\r\n+    name = \"customer_id\",\r\n+    referencedColumnName = \"id\",\r\n+    foreignKey = @ForeignKey(name = \"FK_customer_cart\"),\r\n+    insertable = false,\r\n+    updatable = false,\r\n+    nullable = false\r\n+  )\r\n+  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n+  Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651504516514,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,17 +14,5 @@\n \r\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n-\r\n-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n-  @JoinColumn(\r\n-    name = \"customer_id\",\r\n-    referencedColumnName = \"id\",\r\n-    foreignKey = @ForeignKey(name = \"FK_customer_cart\"),\r\n-    insertable = false,\r\n-    updatable = false,\r\n-    nullable = false\r\n-  )\r\n-  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n-  Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651504690112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,7 @@\n \r\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n+\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651504696818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,6 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  \r\n+  S\r\n }\r\n"
+                },
+                {
+                    "date": 1651504710917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,6 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  S\r\n+  String ship\r\n }\r\n"
+                },
+                {
+                    "date": 1651504716396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,7 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  String ship\r\n+  String shipping_address;\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651504723403,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,9 @@\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n   String shipping_address;\r\n-  \r\n+    String shipping_city;\r\n+    String shipping_zip;\r\n+    String shipping_country;\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651504728658,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,6 +19,8 @@\n   String shipping_address;\r\n     String shipping_city;\r\n     String shipping_zip;\r\n     String shipping_country;\r\n+    String shipping_phone;\r\n+    String shipping_email;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651504737684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,6 +21,7 @@\n     String shipping_zip;\r\n     String shipping_country;\r\n     String shipping_phone;\r\n     String shipping_email;\r\n+    String shipping_first_name;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651504745887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,7 @@\n     String shipping_country;\r\n     String shipping_phone;\r\n     String shipping_email;\r\n     String shipping_first_name;\r\n-    \r\n+    String shipping_last_name;\r\n+    String shipping_\r\n }\r\n"
+                },
+                {
+                    "date": 1651504751194,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,6 +23,6 @@\n     String shipping_phone;\r\n     String shipping_email;\r\n     String shipping_first_name;\r\n     String shipping_last_name;\r\n-    String shipping_\r\n+    String shipping_method;\r\n }\r\n"
+                },
+                {
+                    "date": 1651504766161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,6 +23,7 @@\n     String shipping_phone;\r\n     String shipping_email;\r\n     String shipping_first_name;\r\n     String shipping_last_name;\r\n-    String shipping_method;\r\n+    String payment_method;\r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1651504785792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,6 +24,6 @@\n     String shipping_email;\r\n     String shipping_first_name;\r\n     String shipping_last_name;\r\n     String payment_method;\r\n-\r\n+    String payment_status;\r\n }\r\n"
+                },
+                {
+                    "date": 1651504796142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,14 +16,14 @@\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n   String shipping_address;\r\n-String shipping_city;\r\n-String shipping_zip;\r\n-String shipping_country;\r\n-String shipping_phone;\r\n-String shipping_email;\r\n-String shipping_first_name;\r\n-String shipping_last_name;\r\n+    String shipping_city;\r\n+    String shipping_zip;\r\n+    String shipping_country;\r\n+    String shipping_phone;\r\n+    String shipping_email;\r\n+    String shipping_first_name;\r\n+    String shipping_last_name;\r\n String payment_method;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651504834022,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,10 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n+  @Column(name = \"address\", nullable = false)\r\n   String address;\r\n-  @Column(name = \"address\", nullable = false)\r\n   String city;\r\n   String zip;\r\n   String country;\r\n   String phone;\r\n"
+                }
+            ],
+            "date": 1651504365819,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport javax.persistence.*;\r\nimport lombok.*;\r\n\r\n@Entity\r\n@Table(name = \"\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class Order {\r\n\r\n  @Id\r\n  @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n  Integer id;\r\n}\r\n"
+        }
+    ]
+}

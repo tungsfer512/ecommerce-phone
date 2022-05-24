@@ -1,0 +1,106 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/Product.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 22,
+            "patches": [
+                {
+                    "date": 1651502674895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651502720775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,6 @@\n public class Product {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    \r\n+    String \r\n }\r\n"
+                },
+                {
+                    "date": 1651502739510,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,7 @@\n public class Product {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    String \r\n+    String title;\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651502744982,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,6 +16,7 @@\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     String title;\r\n+    Integer chapter;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651502750664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,7 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     String title;\r\n     Integer chapter;\r\n+    String author;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651502756738,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,6 +18,7 @@\n     Integer id;\r\n     String title;\r\n     Integer chapter;\r\n     String author;\r\n-    \r\n+    String publisher;\r\n+    String isbn;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502762983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,6 +19,7 @@\n     String title;\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n-    String isbn;\r\n+    String quantity;\r\n+    String price;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502769703,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,6 +20,7 @@\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n+    String quality;\r\n     String price;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502777910,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,5 +22,6 @@\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n     String price;\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651502783669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,7 @@\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n     String price;\r\n+    String description;\r\n     \r\n }\r\n"
+                },
+                {
+                    "date": 1651502789391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,6 +23,6 @@\n     String quantity;\r\n     String quality;\r\n     String price;\r\n     String description;\r\n-    \r\n+    String image;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502796336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,6 +23,10 @@\n     String quantity;\r\n     String quality;\r\n     String price;\r\n     String description;\r\n-    String image;\r\n+    String image1;\r\n+    String image2;\r\n+    String image3;\r\n+    String image4;\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651502810227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,6 +27,6 @@\n     String image1;\r\n     String image2;\r\n     String image3;\r\n     String image4;\r\n-    \r\n+    String pub;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502815858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,6 +27,6 @@\n     String image1;\r\n     String image2;\r\n     String image3;\r\n     String image4;\r\n-    String pub;\r\n+    String publish_date;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502849136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,9 @@\n public class Product {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n+    \r\n     String title;\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n"
+                },
+                {
+                    "date": 1651502859411,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n public class Product {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    \r\n+    @Column(name = \"title\", nullable = false)\r\n     String title;\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n"
+                },
+                {
+                    "date": 1651502866307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,14 +17,16 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     @Column(name = \"title\", nullable = false)\r\n     String title;\r\n+\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n     String price;\r\n+    \r\n     String description;\r\n     String image1;\r\n     String image2;\r\n     String image3;\r\n"
+                },
+                {
+                    "date": 1651502878081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,16 +17,16 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     @Column(name = \"title\", nullable = false)\r\n     String title;\r\n-\r\n+    \r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n     String price;\r\n-    \r\n+\r\n     String description;\r\n     String image1;\r\n     String image2;\r\n     String image3;\r\n"
+                },
+                {
+                    "date": 1651502884626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n     String price;\r\n-\r\n+    @Column(name = \"description\", nullable = true)\r\n     String description;\r\n     String image1;\r\n     String image2;\r\n     String image3;\r\n"
+                },
+                {
+                    "date": 1651502891024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     @Column(name = \"title\", nullable = false)\r\n     String title;\r\n-    \r\n+    @Col\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n"
+                },
+                {
+                    "date": 1651502898438,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     @Column(name = \"title\", nullable = false)\r\n     String title;\r\n-    @Col\r\n+    @Column(name = \"chapter\", nullable = true)\r\n     Integer chapter;\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n"
+                },
+                {
+                    "date": 1651502905240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     @Column(name = \"title\", nullable = false)\r\n     String title;\r\n     @Column(name = \"chapter\", nullable = true)\r\n     Integer chapter;\r\n-    @Column(name = \"auy\", nullable = true)\r\n+    @Column(name = \"au\", nullable = true)\r\n     String author;\r\n     String publisher;\r\n     String quantity;\r\n     String quality;\r\n"
+                },
+                {
+                    "date": 1651502993328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n     @Column(name = \"publisher\", nullable = true)\r\n     String publisher;\r\n     @Column(name = \"quantity\", nullable = false)\r\n     String quantity;\r\n-    @Column(name = \"qual\", nullable = false)\r\n+    @Column(name = \"quali\", nullable = false)\r\n     String quality;\r\n     @Column(name = \"price\", nullable = false)\r\n     String price;\r\n     @Column(name = \"description\", nullable = true)\r\n"
+                }
+            ],
+            "date": 1651502674895,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport lombok.*;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\n\r\npublic class Product {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    Integer id;\r\n    \r\n}\r\n"
+        }
+    ]
+}

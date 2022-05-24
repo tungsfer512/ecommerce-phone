@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/ProductCategory.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1651503084431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651503101167,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n import javax.persistence.*;\r\n \r\n @Entity\r\n-@Table(name = \"productcateg\")\r\n+@Table(name = \"productcategory\")\r\n @Data\r\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n@@ -15,5 +15,6 @@\n public class ProductCategory {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651503173840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,7 @@\n public class ProductCategory {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    \r\n+\r\n+    @co\r\n }\r\n"
+                },
+                {
+                    "date": 1651503179040,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,6 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n \r\n     @column(name = \"product_id\", nullable = false)\r\n-    \r\n+    I\r\n }\r\n"
+                }
+            ],
+            "date": 1651503084431,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport lombok.*;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"productcateg\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\n\r\npublic class ProductCategory {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    Integer id;\r\n}\r\n"
+        }
+    ]
+}

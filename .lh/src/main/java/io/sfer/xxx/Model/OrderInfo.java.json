@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/OrderInfo.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1651507052674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651507495225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -45,18 +45,18 @@\n   @Column(name = \"payment_method\", nullable = false)\r\n   String payment_method;\r\n \r\n   @Column(name = \"customer_id\")\r\n-  String customer_id;\r\n+  Integer customer_id;\r\n \r\n-  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n+  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)\r\n   @JoinColumn(\r\n     name = \"customer_id\",\r\n     referencedColumnName = \"id\",\r\n     foreignKey = @ForeignKey(name = \"FK_customer_orderinfo\"),\r\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n-  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n+  @JsonIgnoreProperties(value = { \"applications\", \"hibernateEAGERInitializer\" })\r\n   Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651510983810,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,36 +17,36 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"address\", nullable = false)\r\n+  @Column(name = \"address\", nullable = true)\r\n   String address;\r\n \r\n-  @Column(name = \"city\", nullable = false)\r\n+  @Column(name = \"city\", nullable = true)\r\n   String city;\r\n \r\n   @Column(name = \"zip\", nullable = true)\r\n   String zip;\r\n \r\n-  @Column(name = \"country\", nullable = false)\r\n+  @Column(name = \"country\", nullable = true)\r\n   String country;\r\n \r\n-  @Column(name = \"phone\", nullable = false)\r\n+  @Column(name = \"phone\", nullable = true)\r\n   String phone;\r\n \r\n-  @Column(name = \"email\", nullable = false)\r\n+  @Column(name = \"email\", nullable = true)\r\n   String email;\r\n \r\n-  @Column(name = \"f_name\", nullable = false)\r\n+  @Column(name = \"f_name\", nullable = true)\r\n   String first_name;\r\n \r\n-  @Column(name = \"l_name\", nullable = false)\r\n+  @Column(name = \"l_name\", nullable = true)\r\n   String last_name;\r\n \r\n-  @Column(name = \"payment_method\", nullable = false)\r\n+  @Column(name = \"payment_method\", nullable = true)\r\n   String payment_method;\r\n \r\n-  @Column(name = \"customer_id\")\r\n+  @Column(name = \"customer_id\", nullable = true)\r\n   Integer customer_id;\r\n \r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)\r\n   @JoinColumn(\r\n"
+                },
+                {
+                    "date": 1651511923229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,36 +17,36 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"address\", nullable = true)\r\n+  @Column(name = \"address\", nullable = false)\r\n   String address;\r\n \r\n-  @Column(name = \"city\", nullable = true)\r\n+  @Column(name = \"city\", nullable = false)\r\n   String city;\r\n \r\n-  @Column(name = \"zip\", nullable = true)\r\n+  @Column(name = \"zip\", nullable = false)\r\n   String zip;\r\n \r\n-  @Column(name = \"country\", nullable = true)\r\n+  @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n-  @Column(name = \"phone\", nullable = true)\r\n+  @Column(name = \"phone\", nullable = false)\r\n   String phone;\r\n \r\n-  @Column(name = \"email\", nullable = true)\r\n+  @Column(name = \"email\", nullable = false)\r\n   String email;\r\n \r\n-  @Column(name = \"f_name\", nullable = true)\r\n+  @Column(name = \"f_name\", nullable = false)\r\n   String first_name;\r\n \r\n-  @Column(name = \"l_name\", nullable = true)\r\n+  @Column(name = \"l_name\", nullable = false)\r\n   String last_name;\r\n \r\n-  @Column(name = \"payment_method\", nullable = true)\r\n+  @Column(name = \"payment_method\", nullable = false)\r\n   String payment_method;\r\n \r\n-  @Column(name = \"customer_id\", nullable = true)\r\n+  @Column(name = \"customer_id\", nullable = false)\r\n   Integer customer_id;\r\n \r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)\r\n   @JoinColumn(\r\n"
+                },
+                {
+                    "date": 1651513324903,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n package io.sfer.xxx.Model;\r\n \r\n+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;\r\n import javax.persistence.*;\r\n-\r\n-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;\r\n import lombok.*;\r\n \r\n @Entity\r\n @Table(name = \"orderinfo\")\r\n"
+                },
+                {
+                    "date": 1651541989517,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,16 +46,16 @@\n \r\n   @Column(name = \"customer_id\", nullable = false)\r\n   Integer customer_id;\r\n \r\n-  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)\r\n+  @ManyToOne(fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"customer_id\",\r\n     referencedColumnName = \"id\",\r\n     foreignKey = @ForeignKey(name = \"FK_customer_orderinfo\"),\r\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n-  @JsonIgnoreProperties(value = { \"applications\", \"hibernateEAGERInitializer\" })\r\n+  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLAZYInitializer\" })\r\n   Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651542218056,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -55,7 +55,7 @@\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n-  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLAZYInitializer\" })\r\n+  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n   Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651565413423,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n   @Column(name = \"email\", nullable = false)\r\n   String email;\r\n \r\n   @Column(name = \"f_name\", nullable = false)\r\n-  String first_name;\r\n+  String f_name;\r\n \r\n   @Column(name = \"l_name\", nullable = false)\r\n   String last_name;\r\n \r\n"
+                }
+            ],
+            "date": 1651507052674,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport javax.persistence.*;\r\n\r\nimport com.fasterxml.jackson.annotation.JsonIgnoreProperties;\r\nimport lombok.*;\r\n\r\n@Entity\r\n@Table(name = \"orderinfo\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class OrderInfo {\r\n\r\n  @Id\r\n  @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n  Integer id;\r\n\r\n  @Column(name = \"address\", nullable = false)\r\n  String address;\r\n\r\n  @Column(name = \"city\", nullable = false)\r\n  String city;\r\n\r\n  @Column(name = \"zip\", nullable = true)\r\n  String zip;\r\n\r\n  @Column(name = \"country\", nullable = false)\r\n  String country;\r\n\r\n  @Column(name = \"phone\", nullable = false)\r\n  String phone;\r\n\r\n  @Column(name = \"email\", nullable = false)\r\n  String email;\r\n\r\n  @Column(name = \"f_name\", nullable = false)\r\n  String first_name;\r\n\r\n  @Column(name = \"l_name\", nullable = false)\r\n  String last_name;\r\n\r\n  @Column(name = \"payment_method\", nullable = false)\r\n  String payment_method;\r\n\r\n  @Column(name = \"customer_id\")\r\n  String customer_id;\r\n\r\n  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n  @JoinColumn(\r\n    name = \"customer_id\",\r\n    referencedColumnName = \"id\",\r\n    foreignKey = @ForeignKey(name = \"FK_customer_orderinfo\"),\r\n    insertable = false,\r\n    updatable = false,\r\n    nullable = false\r\n  )\r\n  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n  Customer customer;\r\n}\r\n"
+        }
+    ]
+}

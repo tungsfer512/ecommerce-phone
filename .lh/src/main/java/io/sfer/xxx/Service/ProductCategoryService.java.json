@@ -1,0 +1,82 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Service/ProductCategoryService.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1651515215406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651515229451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,18 @@\n package io.sfer.xxx.Service;\r\n \r\n import io.sfer.xxx.Model.ProductCategory;\r\n import io.sfer.xxx.Respository.ProductCategoryRespository;\r\n+import java.util.List;\r\n import org.springframework.beans.factory.annotation.Autowired;\r\n import org.springframework.stereotype.Service;\r\n \r\n-import java.util.List;\r\n-\r\n @Service\r\n public class ProductCategoryService {\r\n-    @Autowired\r\n-    ProductCategoryRespository productCategoryRespository;\r\n \r\n-    public List<ProductCategory> getAllProductCategory() {\r\n-        return productCategoryRespository.findAll();\r\n-    }\r\n-    \r\n+  @Autowired\r\n+  ProductCategoryRespository productCategoryRespository;\r\n+\r\n+  public List<ProductCategory> getAllProductCategory() {\r\n+    return productCategoryRespository.findAll();\r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1651515290598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,5 +14,6 @@\n \r\n   public List<ProductCategory> getAllProductCategory() {\r\n     return productCategoryRespository.findAll();\r\n   }\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651515296760,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,6 @@\n \r\n   public List<ProductCategory> getAllProductCategory() {\r\n     return productCategoryRespository.findAll();\r\n   }\r\n-  \r\n+  public \r\n }\r\n"
+                },
+                {
+                    "date": 1651515307572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,9 @@\n \r\n   public List<ProductCategory> getAllProductCategory() {\r\n     return productCategoryRespository.findAll();\r\n   }\r\n-  public \r\n+  public ProductCategory getProductCategoryById(Integer id) {\r\n+    return productCategoryRespository.findById(id).get();\r\n+  }\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651515313948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,6 +17,8 @@\n   }\r\n   public ProductCategory getProductCategoryById(Integer id) {\r\n     return productCategoryRespository.findById(id).get();\r\n   }\r\n-  \r\n+  public ProductCategory saveProductCategory(ProductCategory productCategory) {\r\n+    return productCategoryRespository.save(productCategory);\r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1651515320912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n   }\r\n   public ProductCategory getProductCategoryById(Integer id) {\r\n     return productCategoryRespository.findById(id).get();\r\n   }\r\n-  public ProductCategory saveProductCategory(ProductCategory productCategory) {\r\n+  public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651515329923,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,6 +20,9 @@\n   }\r\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n+  public ProductCategory updateProductCategory(ProductCategory productCategory) {\r\n+    return productCategoryRespository.save(productCategory);\r\n+  }\r\n   \r\n }\r\n"
+                },
+                {
+                    "date": 1651515380132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,25 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n   public ProductCategory updateProductCategory(ProductCategory productCategory) {\r\n-    return productCategoryRespository.save(productCategory);\r\n+    return categoryRespository\r\n+      .findById(category.getId())\r\n+      .map(\r\n+        existedCategory -> {\r\n+          existedCategory.setCode(category.getCode());\r\n+          existedCategory.setName(category.getName());\r\n+          existedCategory.setDescription(category.getDescription());\r\n+          return categoryRespository.save(existedCategory);\r\n+        }\r\n+      )\r\n+      .orElseGet(\r\n+        () -> {\r\n+          category.setId(category.getId());\r\n+          return categoryRespository.save(category);\r\n+        }\r\n+      );\r\n   }\r\n-  \r\n+  public void deleteProductCategory(Integer id) {\r\n+    productCategoryRespository.deleteById(id);\r\n+  }\r\n }\r\n"
+                },
+                {
+                    "date": 1651515388201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n   public ProductCategory updateProductCategory(ProductCategory productCategory) {\r\n-    return categoryRespository\r\n+    return pr\r\n       .findById(category.getId())\r\n       .map(\r\n         existedCategory -> {\r\n           existedCategory.setCode(category.getCode());\r\n"
+                },
+                {
+                    "date": 1651515394463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,16 +14,21 @@\n \r\n   public List<ProductCategory> getAllProductCategory() {\r\n     return productCategoryRespository.findAll();\r\n   }\r\n+\r\n   public ProductCategory getProductCategoryById(Integer id) {\r\n     return productCategoryRespository.findById(id).get();\r\n   }\r\n+\r\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n-  public ProductCategory updateProductCategory(ProductCategory productCategory) {\r\n-    return pr\r\n+\r\n+  public ProductCategory updateProductCategory(\r\n+    ProductCategory productCategory\r\n+  ) {\r\n+    return productCategoryRespository\r\n       .findById(category.getId())\r\n       .map(\r\n         existedCategory -> {\r\n           existedCategory.setCode(category.getCode());\r\n@@ -38,8 +43,9 @@\n           return categoryRespository.save(category);\r\n         }\r\n       );\r\n   }\r\n+\r\n   public void deleteProductCategory(Integer id) {\r\n     productCategoryRespository.deleteById(id);\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1651515411217,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n   public ProductCategory updateProductCategory(\r\n     ProductCategory productCategory\r\n   ) {\r\n     return productCategoryRespository\r\n-      .findById(category.getId())\r\n+      .findById(productCategory.getId())\r\n       .map(\r\n         existedCategory -> {\r\n           existedCategory.setCode(category.getCode());\r\n           existedCategory.setName(category.getName());\r\n"
+                },
+                {
+                    "date": 1651515433237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,13 +29,13 @@\n   ) {\r\n     return productCategoryRespository\r\n       .findById(productCategory.getId())\r\n       .map(\r\n-        existedCategory -> {\r\n-          existedCategory.setCode(category.getCode());\r\n-          existedCategory.setName(category.getName());\r\n-          existedCategory.setDescription(category.getDescription());\r\n-          return categoryRespository.save(existedCategory);\r\n+        existedproductCategory -> {\r\n+          existedproductCategory.setCode(productCategory.getCode());\r\n+          existedproductCategory.setName(productCategory.getName());\r\n+          existedproductCategory.setDescription(productCategory.getDescription());\r\n+          return productCategoryRespository.save(existedproductCategory);\r\n         }\r\n       )\r\n       .orElseGet(\r\n         () -> {\r\n"
+                },
+                {
+                    "date": 1651515439395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,10 +29,10 @@\n   ) {\r\n     return productCategoryRespository\r\n       .findById(productCategory.getId())\r\n       .map(\r\n-        existedproductCategory -> {\r\n-          existedproductCategory.setCode(productCategory.getCode());\r\n+        existedProductCategory -> {\r\n+          existedProductCategory.setCode(productCategory.getCode());\r\n           existedproductCategory.setName(productCategory.getName());\r\n           existedproductCategory.setDescription(productCategory.getDescription());\r\n           return productCategoryRespository.save(existedproductCategory);\r\n         }\r\n"
+                },
+                {
+                    "date": 1651515447405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,11 +31,11 @@\n       .findById(productCategory.getId())\r\n       .map(\r\n         existedProductCategory -> {\r\n           existedProductCategory.setCode(productCategory.getCode());\r\n-          existedproductCategory.setName(productCategory.getName());\r\n-          existedproductCategory.setDescription(productCategory.getDescription());\r\n-          return productCategoryRespository.save(existedproductCategory);\r\n+          existedProductCategory.setName(productCategory.getName());\r\n+          existedProductCategory.setDescription(productCategory.getDescription());\r\n+          return productCategoryRespository.save(existedProductCategory);\r\n         }\r\n       )\r\n       .orElseGet(\r\n         () -> {\r\n"
+                },
+                {
+                    "date": 1651515523581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,29 +23,8 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n \r\n-  public ProductCategory updateProductCategory(\r\n-    ProductCategory productCategory\r\n-  ) {\r\n-    return productCategoryRespository\r\n-      .findById(productCategory.getId())\r\n-      .map(\r\n-        existedProductCategory -> {\r\n-          existedProductCategory.setCode(productCategory.getCode());\r\n-          existedProductCategory.setName(productCategory.getName());\r\n-          existedProductCategory.setDescription(productCategory.getDescription());\r\n-          return productCategoryRespository.save(existedProductCategory);\r\n-        }\r\n-      )\r\n-      .orElseGet(\r\n-        () -> {\r\n-          category.setId(category.getId());\r\n-          return categoryRespository.save(category);\r\n-        }\r\n-      );\r\n-  }\r\n-\r\n   public void deleteProductCategory(Integer id) {\r\n     productCategoryRespository.deleteById(id);\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1651515841626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,26 @@\n   public ProductCategory addProductCategory(ProductCategory productCategory) {\r\n     return productCategoryRespository.save(productCategory);\r\n   }\r\n \r\n+  public updateProductCategory(ProductCategory productCategory) {\r\n+    return productCategoryRespository\r\n+      .findById(productCategory.getId())\r\n+      .map(\r\n+        existProductCategory -> {\r\n+          existProductCategory.setProduct_id(productCategory.getProduct_id());\r\n+          existProductCategory.setCategory_id(productCategory.getCategory_id());\r\n+          return productCategoryRespository.save(existProductCategory);\r\n+        }\r\n+      )\r\n+      .orElseGet(\r\n+        () -> {\r\n+          productCategory.setId(productCategory.getId());\r\n+          return productCategoryRespository.save(productCategory);\r\n+        }\r\n+      );\r\n+  }\r\n+\r\n   public void deleteProductCategory(Integer id) {\r\n     productCategoryRespository.deleteById(id);\r\n   }\r\n }\r\n"
+                }
+            ],
+            "date": 1651515215406,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Service;\r\n\r\nimport io.sfer.xxx.Model.ProductCategory;\r\nimport io.sfer.xxx.Respository.ProductCategoryRespository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class ProductCategoryService {\r\n    @Autowired\r\n    ProductCategoryRespository productCategoryRespository;\r\n\r\n    public List<ProductCategory> getAllProductCategory() {\r\n        return productCategoryRespository.findAll();\r\n    }\r\n    \r\n}\r\n"
+        }
+    ]
+}

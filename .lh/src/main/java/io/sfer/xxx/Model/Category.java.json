@@ -1,0 +1,62 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/Category.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1651502572992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651502582424,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,7 @@\n public class Category {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    \r\n+    String code;\r\n+    String \r\n }\r\n"
+                },
+                {
+                    "date": 1651502595913,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,7 +15,9 @@\n public class Category {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n+    @\r\n     String code;\r\n-    String \r\n+    String name;\r\n+    String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502601127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n public class Category {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    @\r\n+    @Column(name = \"code\")\r\n     String code;\r\n     String name;\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502606463,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n public class Category {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    @Column(name = \"code\")\r\n+    @Column(name = \"code\", null)\r\n     String code;\r\n     String name;\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502632555,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,10 @@\n public class Category {\r\n     @Id\r\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n-    @Column(name = \"code\", null)\r\n+    @Column(name = \"code\", nullable = false)\r\n     String code;\r\n+    @Co\r\n     String name;\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502639917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n     @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n     Integer id;\r\n     @Column(name = \"code\", nullable = false)\r\n     String code;\r\n-    @Co\r\n+    @Column(name = \"name\", nullable = false)\r\n     String name;\r\n+    @\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651502647552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,7 +19,7 @@\n     @Column(name = \"code\", nullable = false)\r\n     String code;\r\n     @Column(name = \"name\", nullable = false)\r\n     String name;\r\n-    @\r\n+    @Column(name = \"description\", nullable = True)\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651503076267,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n import javax.persistence.*;\r\n \r\n @Entity\r\n-@Table(name = \"\")\r\n+@Table(name = \"category\")\r\n @Data\r\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n@@ -19,7 +19,7 @@\n     @Column(name = \"code\", nullable = false)\r\n     String code;\r\n     @Column(name = \"name\", nullable = false)\r\n     String name;\r\n-    @Column(name = \"description\", nullable = True)\r\n+    @Column(name = \"description\", nullable = true)\r\n     String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651504036232,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,25 +1,27 @@\n package io.sfer.xxx.Model;\r\n \r\n+import javax.persistence.*;\r\n import lombok.*;\r\n \r\n-import javax.persistence.*;\r\n-\r\n @Entity\r\n @Table(name = \"category\")\r\n @Data\r\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n @Setter\r\n+public class Category {\r\n \r\n-public class Category {\r\n-    @Id\r\n-    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n-    Integer id;\r\n-    @Column(name = \"code\", nullable = false)\r\n-    String code;\r\n-    @Column(name = \"name\", nullable = false)\r\n-    String name;\r\n-    @Column(name = \"description\", nullable = true)\r\n-    String description;\r\n+  @Id\r\n+  @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n+  Integer id;\r\n+\r\n+  @Column(name = \"code\", nullable = false)\r\n+  String code;\r\n+\r\n+  @Column(name = \"name\", nullable = false)\r\n+  String name;\r\n+\r\n+  @Column(name = \"description\", nullable = true)\r\n+  String description;\r\n }\r\n"
+                },
+                {
+                    "date": 1651510977871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,12 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"code\", nullable = false)\r\n+  @Column(name = \"code\", nullable = true)\r\n   String code;\r\n \r\n-  @Column(name = \"name\", nullable = false)\r\n+  @Column(name = \"name\", nullable = true)\r\n   String name;\r\n \r\n   @Column(name = \"description\", nullable = true)\r\n   String description;\r\n"
+                },
+                {
+                    "date": 1651511918280,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,13 +15,13 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"code\", nullable = true)\r\n+  @Column(name = \"code\", nullable = false)\r\n   String code;\r\n \r\n-  @Column(name = \"name\", nullable = true)\r\n+  @Column(name = \"name\", nullable = false)\r\n   String name;\r\n \r\n-  @Column(name = \"description\", nullable = true)\r\n+  @Column(name = \"description\", nullable = false)\r\n   String description;\r\n }\r\n"
+                }
+            ],
+            "date": 1651502572992,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport lombok.*;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\n\r\npublic class Category {\r\n    @Id\r\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n    Integer id;\r\n    \r\n}\r\n"
+        }
+    ]
+}

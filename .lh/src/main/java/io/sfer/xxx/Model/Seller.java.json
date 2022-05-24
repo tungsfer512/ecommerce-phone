@@ -1,0 +1,58 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/Seller.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1651504277936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651504288526,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,19 @@\n package io.sfer.xxx.Model;\r\n \r\n+import javax.persistence.*;\r\n import lombok.*;\r\n \r\n-import javax.persistence.*;\r\n-\r\n @Entity\r\n @Table(name = \"\")\r\n @Data\r\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n @Setter\r\n+public class Seller {\r\n \r\n-public class Seller {\r\n-    @Id\r\n+  @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n   @Column(name = \"f_name\", nullable = false)\r\n@@ -48,5 +47,7 @@\n   String zip;\r\n \r\n   @Column(name = \"country\", nullable = false)\r\n   String country;\r\n+\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651504294404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,6 +48,7 @@\n \r\n   @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n+  @Column(name = \"company_name\", nullable = false)\r\n   \r\n }\r\n"
+                },
+                {
+                    "date": 1651504299868,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,6 +49,7 @@\n   @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n   @Column(name = \"company_name\", nullable = false)\r\n-  \r\n+    String company_name;\r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1651504309569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,8 +48,9 @@\n \r\n   @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n-  @Column(name = \"company_name\", nullable = false)\r\n-    String company_name;\r\n+  @Column(name = \"brand_name\", nullable = false)\r\n+    String brand_name;\r\n \r\n+\r\n }\r\n"
+                },
+                {
+                    "date": 1651504329916,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,6 +51,6 @@\n \r\n   @Column(name = \"brand_name\", nullable = false)\r\n     String brand_name;\r\n \r\n-\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651504338597,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,6 +51,6 @@\n \r\n   @Column(name = \"brand_name\", nullable = false)\r\n     String brand_name;\r\n \r\n-    \r\n+    @Column(name = \"brand_logo\", nullable = false)\r\n }\r\n"
+                },
+                {
+                    "date": 1651504345720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,5 +52,6 @@\n   @Column(name = \"brand_name\", nullable = false)\r\n     String brand_name;\r\n \r\n     @Column(name = \"brand_logo\", nullable = false)\r\n+    \r\n }\r\n"
+                },
+                {
+                    "date": 1651505874437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import javax.persistence.*;\r\n import lombok.*;\r\n \r\n @Entity\r\n-@Table(name = \"\")\r\n+@Table(name = \"seller\")\r\n @Data\r\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n@@ -49,9 +49,9 @@\n   @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n   @Column(name = \"brand_name\", nullable = false)\r\n-    String brand_name;\r\n+  String brand_name;\r\n \r\n-    @Column(name = \"brand_logo\", nullable = false)\r\n-    \r\n+  @Column(name = \"brand_logo\", nullable = false)\r\n+  String brand_logo;\r\n }\r\n"
+                },
+                {
+                    "date": 1651510990184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,43 +15,43 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"f_name\", nullable = false)\r\n+  @Column(name = \"f_name\", nullable = true)\r\n   String f_name;\r\n \r\n-  @Column(name = \"l_name\", nullable = false)\r\n+  @Column(name = \"l_name\", nullable = true)\r\n   String l_name;\r\n \r\n-  @Column(name = \"dob\", nullable = false)\r\n+  @Column(name = \"dob\", nullable = true)\r\n   String dob;\r\n \r\n-  @Column(name = \"email\", nullable = false)\r\n+  @Column(name = \"email\", nullable = true)\r\n   String email;\r\n \r\n-  @Column(name = \"password\", nullable = false)\r\n+  @Column(name = \"password\", nullable = true)\r\n   String password;\r\n \r\n-  @Column(name = \"gender\", nullable = false)\r\n+  @Column(name = \"gender\", nullable = true)\r\n   String gender;\r\n \r\n-  @Column(name = \"phone\", nullable = false)\r\n+  @Column(name = \"phone\", nullable = true)\r\n   String phone;\r\n \r\n-  @Column(name = \"address\", nullable = false)\r\n+  @Column(name = \"address\", nullable = true)\r\n   String address;\r\n \r\n-  @Column(name = \"city\", nullable = false)\r\n+  @Column(name = \"city\", nullable = true)\r\n   String city;\r\n \r\n   @Column(name = \"zip\", nullable = true)\r\n   String zip;\r\n \r\n-  @Column(name = \"country\", nullable = false)\r\n+  @Column(name = \"country\", nullable = true)\r\n   String country;\r\n \r\n-  @Column(name = \"brand_name\", nullable = false)\r\n+  @Column(name = \"brand_name\", nullable = true)\r\n   String brand_name;\r\n \r\n-  @Column(name = \"brand_logo\", nullable = false)\r\n+  @Column(name = \"brand_logo\", nullable = true)\r\n   String brand_logo;\r\n }\r\n"
+                },
+                {
+                    "date": 1651511930376,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,43 +15,43 @@\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n \r\n-  @Column(name = \"f_name\", nullable = true)\r\n+  @Column(name = \"f_name\", nullable = false)\r\n   String f_name;\r\n \r\n-  @Column(name = \"l_name\", nullable = true)\r\n+  @Column(name = \"l_name\", nullable = false)\r\n   String l_name;\r\n \r\n-  @Column(name = \"dob\", nullable = true)\r\n+  @Column(name = \"dob\", nullable = false)\r\n   String dob;\r\n \r\n-  @Column(name = \"email\", nullable = true)\r\n+  @Column(name = \"email\", nullable = false)\r\n   String email;\r\n \r\n-  @Column(name = \"password\", nullable = true)\r\n+  @Column(name = \"password\", nullable = false)\r\n   String password;\r\n \r\n-  @Column(name = \"gender\", nullable = true)\r\n+  @Column(name = \"gender\", nullable = false)\r\n   String gender;\r\n \r\n-  @Column(name = \"phone\", nullable = true)\r\n+  @Column(name = \"phone\", nullable = false)\r\n   String phone;\r\n \r\n-  @Column(name = \"address\", nullable = true)\r\n+  @Column(name = \"address\", nullable = false)\r\n   String address;\r\n \r\n-  @Column(name = \"city\", nullable = true)\r\n+  @Column(name = \"city\", nullable = false)\r\n   String city;\r\n \r\n-  @Column(name = \"zip\", nullable = true)\r\n+  @Column(name = \"zip\", nullable = false)\r\n   String zip;\r\n \r\n-  @Column(name = \"country\", nullable = true)\r\n+  @Column(name = \"country\", nullable = false)\r\n   String country;\r\n \r\n-  @Column(name = \"brand_name\", nullable = true)\r\n+  @Column(name = \"brand_name\", nullable = false)\r\n   String brand_name;\r\n \r\n-  @Column(name = \"brand_logo\", nullable = true)\r\n+  @Column(name = \"brand_logo\", nullable = false)\r\n   String brand_logo;\r\n }\r\n"
+                }
+            ],
+            "date": 1651504277936,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport lombok.*;\r\n\r\nimport javax.persistence.*;\r\n\r\n@Entity\r\n@Table(name = \"\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\n\r\npublic class Seller {\r\n    @Id\r\n  @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n  Integer id;\r\n\r\n  @Column(name = \"f_name\", nullable = false)\r\n  String f_name;\r\n\r\n  @Column(name = \"l_name\", nullable = false)\r\n  String l_name;\r\n\r\n  @Column(name = \"dob\", nullable = false)\r\n  String dob;\r\n\r\n  @Column(name = \"email\", nullable = false)\r\n  String email;\r\n\r\n  @Column(name = \"password\", nullable = false)\r\n  String password;\r\n\r\n  @Column(name = \"gender\", nullable = false)\r\n  String gender;\r\n\r\n  @Column(name = \"phone\", nullable = false)\r\n  String phone;\r\n\r\n  @Column(name = \"address\", nullable = false)\r\n  String address;\r\n\r\n  @Column(name = \"city\", nullable = false)\r\n  String city;\r\n\r\n  @Column(name = \"zip\", nullable = true)\r\n  String zip;\r\n\r\n  @Column(name = \"country\", nullable = false)\r\n  String country;\r\n}\r\n"
+        }
+    ]
+}

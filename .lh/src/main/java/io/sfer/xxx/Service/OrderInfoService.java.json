@@ -1,0 +1,42 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Service/OrderInfoService.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1651565312585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651565329245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,8 +31,10 @@\n \t\r\n \tpublic OrderInfo updateOrder(OrderInfo orderInfo) {\r\n \t\treturn orderInfoRespository.findById(orderInfo.getId()).map(existedOrderInfo -> {\r\n \t\t\texistedOrderInfo.setAddress(orderInfo.getAddress());\r\n+\t\t\texistedOrderInfo.setCity(orderInfo.getCity());\r\n+\t\t\texistedOrderInfo.setCountry(orderInfo.getCountry());\r\n \t\t\t\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n"
+                },
+                {
+                    "date": 1651565335843,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,9 @@\n \t\treturn orderInfoRespository.findById(orderInfo.getId()).map(existedOrderInfo -> {\r\n \t\t\texistedOrderInfo.setAddress(orderInfo.getAddress());\r\n \t\t\texistedOrderInfo.setCity(orderInfo.getCity());\r\n \t\t\texistedOrderInfo.setCountry(orderInfo.getCountry());\r\n+\t\t\texistedOrderInfo.setEmail(orderInfo.getEmail());\r\n \t\t\t\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n"
+                },
+                {
+                    "date": 1651565342079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,10 @@\n \t\t\texistedOrderInfo.setAddress(orderInfo.getAddress());\r\n \t\t\texistedOrderInfo.setCity(orderInfo.getCity());\r\n \t\t\texistedOrderInfo.setCountry(orderInfo.getCountry());\r\n \t\t\texistedOrderInfo.setEmail(orderInfo.getEmail());\r\n+\t\t\texistedOrderInfo.setF_name(orderInfo.getF_name());\r\n+\t\t\texistedOrderInfo.setL_name(orderInfo.getL_name());\r\n \t\t\t\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n"
+                },
+                {
+                    "date": 1651565363699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,8 +36,10 @@\n \t\t\texistedOrderInfo.setCountry(orderInfo.getCountry());\r\n \t\t\texistedOrderInfo.setEmail(orderInfo.getEmail());\r\n \t\t\texistedOrderInfo.setF_name(orderInfo.getF_name());\r\n \t\t\texistedOrderInfo.setL_name(orderInfo.getL_name());\r\n+\t\t\texistedOrderInfo.setPhone(orderInfo.getPhone());\r\n+\t\t\texistedOrderInfo.setState(orderInfo.getState());\r\n \t\t\t\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n"
+                },
+                {
+                    "date": 1651565370168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,10 +37,10 @@\n \t\t\texistedOrderInfo.setEmail(orderInfo.getEmail());\r\n \t\t\texistedOrderInfo.setF_name(orderInfo.getF_name());\r\n \t\t\texistedOrderInfo.setL_name(orderInfo.getL_name());\r\n \t\t\texistedOrderInfo.setPhone(orderInfo.getPhone());\r\n-\t\t\texistedOrderInfo.setState(orderInfo.getState());\r\n-\t\t\t\r\n+\t\t\texistedOrderInfo.setZip(orderInfo.getZip());\r\n+\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n \t\t})\r\n"
+                },
+                {
+                    "date": 1651565386169,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n \t\t\texistedOrderInfo.setF_name(orderInfo.getF_name());\r\n \t\t\texistedOrderInfo.setL_name(orderInfo.getL_name());\r\n \t\t\texistedOrderInfo.setPhone(orderInfo.getPhone());\r\n \t\t\texistedOrderInfo.setZip(orderInfo.getZip());\r\n-\r\n+\t\t\texistedCustomer\r\n \t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n \t\t}).orElseGet(() -> {\r\n \t\t\treturn orderInfoRespository.save(orderInfo);\r\n \t\t})\r\n"
+                }
+            ],
+            "date": 1651565312585,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Service;\r\n\r\nimport io.sfer.xxx.Model.OrderInfo;\r\nimport io.sfer.xxx.Respository.OrderInfoRespository;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.util.List;\r\n\r\n@Service\r\npublic class OrderInfoService {\r\n\t\r\n\t@Autowired\r\n\tOrderInfoRespository orderInfoRespository;\r\n\t\r\n\tpublic List<OrderInfo> getAllOrder() {\r\n\t\treturn orderInfoRespository.findAll();\r\n\t}\r\n\t\r\n\tpublic OrderInfo getOrderById(Integer id) {\r\n\t\treturn orderInfoRespository.findById(id).get();\r\n\t}\r\n\t\r\n\tpublic OrderInfo addOrder(OrderInfo orderInfo) {\r\n\t\treturn orderInfoRespository.save(orderInfo);\r\n\t}\r\n\t\r\n\tpublic void deleteOrder(Integer id) {\r\n\t\torderInfoRespository.deleteById(id);\r\n\t}\r\n\t\r\n\tpublic OrderInfo updateOrder(OrderInfo orderInfo) {\r\n\t\treturn orderInfoRespository.findById(orderInfo.getId()).map(existedOrderInfo -> {\r\n\t\t\texistedOrderInfo.setAddress(orderInfo.getAddress());\r\n\t\t\t\r\n\t\t\treturn orderInfoRespository.save(existedOrderInfo);\r\n\t\t}).orElseGet(() -> {\r\n\t\t\treturn orderInfoRespository.save(orderInfo);\r\n\t\t})\r\n\t}\r\n}\r\n"
+        }
+    ]
+}

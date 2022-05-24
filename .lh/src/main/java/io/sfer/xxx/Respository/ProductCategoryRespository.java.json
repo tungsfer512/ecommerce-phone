@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Respository/ProductCategoryRespository.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1651513347718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1651513347718,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Respository;\r\n\r\nimport io.sfer.xxx.Model.ProductCategory;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\npublic interface ProductCategoryRespository\r\n  extends JpaRepository<ProductCategory, Integer> {}\r\n"
+        }
+    ]
+}

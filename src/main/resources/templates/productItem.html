@@ -1,0 +1,838 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>T_Comic - Mua bán truyện tranh</title>
+  <link rel="icon" th:href="@{/img/favicon.png}" href="../static/img/favicon.png" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" />
+  <!-- animate CSS -->
+  <link rel="stylesheet" th:href="@{/css/animate.css}" href="../static/css/animate.css" />
+  <!-- owl carousel CSS -->
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}" href="../static/css/owl.carousel.min.css" />
+  <link rel="stylesheet" th:href="@{/css/lightslider.min.css}" href="../static/css/lightslider.min.css">
+  <!-- nice select CSS -->
+  <link rel="stylesheet" th:href="@{/css/nice-select.css}" href="../static/css/nice-select.css">
+  <!-- font awesome CSS -->
+  <link rel="stylesheet" th:href="@{/css/all.css}" href="../static/css/all.css" />
+  <!-- flaticon CSS -->
+  <link rel="stylesheet" th:href="@{/css/flaticon.css}" href="../static/css/flaticon.css" />
+  <link rel="stylesheet" th:href="@{/css/themify-icons.css}" href="../static/css/themify-icons.css" />
+  <!-- font awesome CSS -->
+  <link rel="stylesheet" th:href="@{/css/magnific-popup.css}" href="../static/css/magnific-popup.css" />
+  <!-- swiper CSS -->
+  <link rel="stylesheet" th:href="@{/css/slick.css}" href="../static/css/slick.css" />
+  <link rel="stylesheet" th:href="@{/css/price_rangs.css}" href="../static/css/price_rangs.css" />
+  <!-- style CSS -->
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css" />
+  <link rel="stylesheet" th:href="@{/css/scroll.css}" href="../static/css/scroll.css" />
+</head>
+
+<body>
+<!--::header part start::-->
+<header class="main_menu home_menu">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-12">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand" th:href="@{/}" href="index.html">
+            <img th:src="@{/img/logo.png}" src="../static/img/logo.png" alt="logo" />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="menu_icon"><i class="fas fa-bars"></i></span>
+          </button>
+          
+          <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}" href="productList.html">Sản
+                  phẩm</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/blog}" href="blog.html">Cập nhật</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/about}" href="about.html">Giới thiệu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/contact}" href="contact.html">Liên hệ</a>
+              </li>
+            </ul>
+          </div>
+          <div class="hearer_icon d-flex">
+            <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
+            <div class="cart">
+              <a href="/cart">
+                <i class="fas fa-cart-plus"></i>
+                <span th:fragment="cart_frag"> <span id="numberCart">0</span></span>
+              </a>
+            </div>
+            <div class="dropdown customer">
+              <p id="loginout" style="color: white; display: flex; align-items:center; justify-content: center; " sec:authorize="isAnonymous()"> <a class="nav-link" href="/login">Đăng nhập</a> / <a class="nav-link" href="/register">Đăng ký</a></p>
+              <a sec:authorize="isAuthenticated()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown_1"
+                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="display: flex; justify-content: center; align-items: center;">
+                <p style="color: white;">
+                  Xin chào,
+                  <span th:text="${#authentication.getPrincipal().getFullName()}"></span>
+                  <span style="display: none;" id="useremail" th:text="${#authentication.getPrincipal().getEmail()}"></span>
+                </p>
+              </a>
+              <div sec:authorize="isAuthenticated()" class="dropdown-menu" aria-labelledby="navbarDropdown_1" style="display: block; width: 220px;">
+                <a th:href="@{/profile}" href="user/profile.html" class="dropdown-item">Profile</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}" class="dropdown-item">Quản lý</a>
+                <a th:href="@{/wishlist}" href="user/wishList.html" class="dropdown-item">Sản phẩm
+                  đã thích</a>
+                <a th:href="@{/logout}" href="index.html" class="dropdown-item">Đăng
+                  xuất</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="search_input" id="search_input_box">
+    <div class="container ">
+      <form class="d-flex justify-content-between search-inner" th:action="@{/products/search}" th:method="get">
+        <input type="text" class="form-control" id="search_input" placeholder="Tìm kiếm" th:name="keyword" th:value="${keyword}">
+        <button type="submit" class="btn"></button>
+        <span class="ti-close" id="close_search" title="Close Search"></span>
+      </form>
+    </div>
+  </div>
+</header>
+<!-- Header part end-->
+
+<!--================End Home Banner Area =================-->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area section_padding">
+  <div class="container">
+    <div class="row s_product_inner justify-content-between">
+      <div class="col-lg-7 col-xl-7">
+        <div class="product_slider_img">
+          <div id="vertical">
+            <div  data-thumb="../../static/img/offer_img.jpg">
+              <img th:src="@{${'/productImages/'+product.getImage()}}" src="../static/img/offer_img.jpg" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 col-xl-4">
+        <div class="s_product_text">
+          <h5>previous <span>|</span> next</h5>
+          <h3 th:text="${product.getName()}">Faded SkyBlu Denim Jeans</h3>
+          <h2 th:text="${'$ ' + product.getPrice()}">$149.99</h2>
+          <ul class="list">
+            <li>
+              <a class="active" href="#">
+                <span>Brand</span> : <span th:text="${product.getBrand()}">Household</span></a>
+            </li>
+            <li>
+              <a href="#"> <span>Tình trạng</span> : Còn hàng</a>
+            </li>
+          </ul>
+          <p th:text="${product.getDescription()}">
+            First replenish living. Creepeth image image. Creeping can't, won't called.
+            Two fruitful let days signs sea together all land fly subdue
+          </p>
+          <div class="card_area d-flex justify-content-between align-items-center">
+            <span style="display: none;" th:text="${product.getId()}"></span>
+            <div class="product_count">
+              <span class="inumber-decrement"> <i class="ti-minus"></i></span>
+              <input class="input-number" type="text" value="1" min="0" max="10">
+              <span class="number-increment"> <i class="ti-plus"></i></span>
+            </div>
+            <span class="btn_3 clickme" style="cursor: pointer;">add to cart</span>
+            <i class="ti-heart addToWishList" style="cursor: pointer; font-size: 25px;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--================End Single Product Area =================-->
+
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+  <div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+           aria-selected="true">Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+           aria-selected="false">Specification</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+           aria-selected="false">Comments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+           aria-controls="review" aria-selected="false">Reviews</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <p th:text="${product.getDescription()}">
+          Beryl Cook is one of Britain’s most talented and amusing artists
+          .Beryl’s pictures feature women of all shapes and sizes enjoying
+          themselves .Born between the two world wars, Beryl Cook eventually
+          left Kendrick School in Reading at the age of 15, where she went
+          to secretarial school and then into an insurance office. After
+          moving to London and then Hampton, she eventually married her next
+          door neighbour from Reading, John Cook. He was an officer in the
+          Merchant Navy and after he left the sea in 1956, they bought a pub
+          for a year before John took a job in Southern Rhodesia with a
+          motor company. Beryl bought their young son a box of watercolours,
+          and when showing him how to use it, she decided that she herself
+          quite enjoyed painting. John subsequently bought her a child’s
+          painting set for her birthday and it was with this that she
+          produced her first significant work, a half-length portrait of a
+          dark-skinned lady with a vacant expression and large drooping
+          breasts. It was aptly named ‘Hangover’ by Beryl’s husband and
+        </p>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+            <tr>
+              <td>
+                <h5>Width</h5>
+              </td>
+              <td>
+                <h5>128mm</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Height</h5>
+              </td>
+              <td>
+                <h5>508mm</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Depth</h5>
+              </td>
+              <td>
+                <h5>85mm</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Weight</h5>
+              </td>
+              <td>
+                <h5>52gm</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Quality checking</h5>
+              </td>
+              <td>
+                <h5>yes</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Freshness Duration</h5>
+              </td>
+              <td>
+                <h5>03days</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>When packeting</h5>
+              </td>
+              <td>
+                <h5>Without touch of hand</h5>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h5>Each Box contains</h5>
+              </td>
+              <td>
+                <h5>60pcs</h5>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="comment_list">
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-1.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <h5>12th Feb, 2017 at 05:56 pm</h5>
+                    <a class="reply_btn" href="#">Reply</a>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+              <div class="review_item reply">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-2.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <h5>12th Feb, 2017 at 05:56 pm</h5>
+                    <a class="reply_btn" href="#">Reply</a>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-3.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <h5>12th Feb, 2017 at 05:56 pm</h5>
+                    <a class="reply_btn" href="#">Reply</a>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="review_box">
+              <h4>Post a comment</h4>
+              <form class="row contact_form" action="contact_process.php" method="post" id="contactForm"
+                    novalidate="novalidate">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                        <textarea class="form-control" name="message" id="message" rows="1"
+                                  placeholder="Message"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 text-right">
+                  <button type="submit" value="submit" class="btn_3">
+                    Submit Now
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row total_rate">
+              <div class="col-6">
+                <div class="box_total">
+                  <h5>Overall</h5>
+                  <h4>4.0</h4>
+                  <h6>(03 Reviews)</h6>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="rating_list">
+                  <h3>Based on 3 Reviews</h3>
+                  <ul class="list">
+                    <li>
+                      <a href="#">5 Star
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 01</a>
+                    </li>
+                    <li>
+                      <a href="#">4 Star
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 01</a>
+                    </li>
+                    <li>
+                      <a href="#">3 Star
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 01</a>
+                    </li>
+                    <li>
+                      <a href="#">2 Star
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 01</a>
+                    </li>
+                    <li>
+                      <a href="#">1 Star
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i> 01</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="review_list">
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-1.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-2.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+              <div class="review_item">
+                <div class="media">
+                  <div class="d-flex">
+                    <img src="img/product/single-product/review-3.png" alt="" />
+                  </div>
+                  <div class="media-body">
+                    <h4>Blake Ruiz</h4>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                  </div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="review_box">
+              <h4>Add a Review</h4>
+              <p>Your Rating:</p>
+              <ul class="list">
+                <li>
+                  <a href="#">
+                    <i class="fa fa-star"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-star"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-star"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-star"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fa fa-star"></i>
+                  </a>
+                </li>
+              </ul>
+              <p>Outstanding</p>
+              <form class="row contact_form" action="contact_process.php" method="post" novalidate="novalidate">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Your Full name" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" placeholder="Email Address" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="number" placeholder="Phone Number" />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <textarea class="form-control" name="message" rows="1" placeholder="Review"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 text-right">
+                  <button type="submit" value="submit" class="btn_3">
+                    Submit Now
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--================End Product Description Area =================-->
+
+<!-- product_list part start-->
+<section class="product_list best_seller section_padding">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="section_tittle text-center">
+          <h2>Best Sellers <span>shop</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+      <div class="col-lg-12">
+        <div class="best_product_slider owl-carousel">
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+          <div class="single_product_item">
+            <a href="#abc"><img th:src="@{/img/offer_img.jpg}" src="../static/img/offer_img.jpg" alt="" /></a>
+            <div class="single_product_text">
+              <a href="#abc">
+                <h4>Quartz Belt Watch</h4>
+              </a>
+              <a href="#abc">
+                <h3>$150.00</h3>
+              </a>
+              <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- product_list part end-->
+
+<!--::footer_part start::-->
+<footer class="footer_part">
+  <div class="copyright_part">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="copyright_text">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is used with
+              <i class="ti-heart" aria-hidden="true"></i> by
+              <a href="https://www.facebook.com/tung.buivan.sfer.11235/" target="_blank">Tungsfer</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer_icon social_icon">
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="single_social_icon"><i class="fab fa-facebook-f"></i></a>
+              </li>
+              <li>
+                <a href="#" class="single_social_icon"><i class="fab fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#" class="single_social_icon"><i class="fas fa-globe"></i></a>
+              </li>
+              <li>
+                <a href="#" class="single_social_icon"><i class="fab fa-behance"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--::footer_part end::-->
+
+<!-- jquery plugins here-->
+<!-- jquery -->
+<script th:src="@{/js/jquery-1.12.1.min.js}" src="../static/js/jquery-1.12.1.min.js"></script>
+<!-- popper js -->
+<script th:src="@{/js/popper.min.js}" src="../static/js/popper.min.js"></script>
+<!-- bootstrap js -->
+<script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
+<!-- easing js -->
+<script th:src="@{/js/jquery.magnific-popup.js}" src="../static/js/jquery.magnific-popup.js"></script>
+<!-- swiper js -->
+<script th:src="@{/js/lightslider.min.js}" src="../static/js/lightslider.min.js"></script>
+<!-- swiper js -->
+<script th:src="@{/js/masonry.pkgd.js}" src="../static/js/masonry.pkgd.js"></script>
+<!-- particles js -->
+<script th:src="@{/js/owl.carousel.min.js}" src="../static/js/owl.carousel.min.js"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}" src="../static/js/jquery.nice-select.min.js"></script>
+<!-- slick js -->
+<script th:src="@{/js/slick.min.js}" src="../static/js/slick.min.js"></script>
+<script th:src="@{/js/swiper.jquery.js}" src="../static/js/swiper.jquery.js"></script>
+<script th:src="@{/js/jquery.counterup.min.js}" src="../static/js/jquery.counterup.min.js"></script>
+<script th:src="@{/js/waypoints.min.js}" src="../static/js/waypoints.min.js"></script>
+<script th:src="@{/js/contact.js}" src="../static/js/contact.js"></script>
+<script th:src="@{/js/jquery.ajaxchimp.min.js}" src="../static/js/jquery.ajaxchimp.min.js"></script>
+<script th:src="@{/js/jquery.form.js}" src="../static/js/jquery.form.js"></script>
+<script th:src="@{/js/jquery.validate.min.js}" src="../static/js/jquery.validate.min.js"></script>
+<script th:src="@{/js/mail-script.js}" src="../static/js/mail-script.js"></script>
+<script th:src="@{/js/stellar.js}" src="../static/js/stellar.js"></script>
+<!-- custom js -->
+<script th:src="@{/js/theme.js}" src="../static/js/theme.js"></script>
+<script th:src="@{/js/custom.js}" src="../static/js/custom.js"></script>
+<script>
+  $("document").ready(function () {
+    var user_id ;
+    var user_email = $("#useremail").text();
+    console.log(user_email);
+    $.get("/apis/getUserIdByEmail/" + user_email ).done(function (xxxid) {
+      user_id = xxxid;
+      console.log(user_id);
+      if($("#loginout").length > 0) {
+        console.log("not login");
+      } else {
+        console.log("login");
+        $.get("/apis/countcart/" + user_id).done(function (fragment) {
+          console.log(fragment);
+          $("#numberCart").html(fragment);
+        });
+      }
+      $(".addToWishList").click(function (e){
+        console.log(e.target);
+        var product_id = e.target.parentElement.firstElementChild.textContent;
+        $.post("/addToWishList/" + product_id).done(function () {
+          alert("đã thêm vào danh sách yêu thích");
+        });
+        console.log(product_id);
+      });
+      $(".clickme").click(function (e) {
+        console.log(e.target);
+        var product_id = e.target.parentElement.firstElementChild.textContent;
+        console.log(product_id);
+        $.post("/addToCart/" + product_id).done(function (fragment) {
+          console.log(fragment);
+          $.get("/apis/countcart/" + user_id).done(function (fragment) {
+            console.log(fragment);
+            $("#numberCart").html(fragment);
+            alert("đã thêm vào giỏ hàng thành công");
+          });
+        });
+      });
+    });
+  });
+</script>
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-6b7c4476-cba7-4d7f-b0ef-dc55634740e3"></div>
+</body>
+
+</html>

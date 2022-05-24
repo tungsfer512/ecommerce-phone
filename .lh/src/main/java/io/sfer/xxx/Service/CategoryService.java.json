@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Service/CategoryService.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1651515233341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1651515233341,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Service;\r\n\r\nimport io.sfer.xxx.Model.Category;\r\nimport io.sfer.xxx.Respository.CategoryRespository;\r\nimport java.util.List;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Service;\r\n\r\n@Service\r\npublic class CategoryService {\r\n\r\n  @Autowired\r\n  CategoryRespository categoryRespository;\r\n\r\n  public List<Category> getAllCategory() {\r\n    return categoryRespository.findAll();\r\n  }\r\n\r\n  public Category addCategory(Category category) {\r\n    return categoryRespository.save(category);\r\n  }\r\n\r\n  public Category getCategoryById(Integer id) {\r\n    return categoryRespository.findById(id).get();\r\n  }\r\n\r\n  public void deleteCategoryById(Integer id) {\r\n    categoryRespository.deleteById(id);\r\n  }\r\n\r\n  public Category updateCategory(Category category) {\r\n    return categoryRespository\r\n      .findById(category.getId())\r\n      .map(\r\n        existedCategory -> {\r\n          existedCategory.setCode(category.getCode());\r\n          existedCategory.setName(category.getName());\r\n          existedCategory.setDescription(category.getDescription());\r\n          return categoryRespository.save(existedCategory);\r\n        }\r\n      )\r\n      .orElseGet(\r\n        () -> {\r\n          category.setId(category.getId());\r\n          return categoryRespository.save(category);\r\n        }\r\n      );\r\n  }\r\n}\r\n"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/Model/ProductCustomer.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1651503507395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651503564739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n @NoArgsConstructor\r\n @AllArgsConstructor\r\n @Getter\r\n @Setter\r\n-public class ProductCus {\r\n+public class ProductCustomer {\r\n \r\n   @Id\r\n   @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n   Integer id;\r\n@@ -22,9 +22,9 @@\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"product_id\",\r\n     referencedColumnName = \"id\",\r\n-    foreignKey = @ForeignKey(name = \"FK_product_productcart\"),\r\n+    foreignKey = @ForeignKey(name = \"FK_product_productcustomer\"),\r\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n@@ -37,9 +37,9 @@\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"product_id\",\r\n     referencedColumnName = \"id\",\r\n-    foreignKey = @ForeignKey(name = \"FK_cart_productcart\"),\r\n+    foreignKey = @ForeignKey(name = \"FK_cart_productcustomer\"),\r\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n"
+                },
+                {
+                    "date": 1651503573071,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,6 +43,6 @@\n     updatable = false,\r\n     nullable = false\r\n   )\r\n   @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n-  Category category;\r\n+  Cus category;\r\n }\r\n"
+                },
+                {
+                    "date": 1651503580585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,6 +43,6 @@\n     updatable = false,\r\n     nullable = false\r\n   )\r\n   @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n-  Cus category;\r\n+  Customer customer;\r\n }\r\n"
+                },
+                {
+                    "date": 1651503587878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,8 @@\n   Product product;\r\n \r\n   @column(name = \"category_id\", nullable = false)\r\n   Integer category_id;\r\n-\r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"product_id\",\r\n     referencedColumnName = \"id\",\r\n"
+                },
+                {
+                    "date": 1651503595253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,9 @@\n   Product product;\r\n \r\n   @column(name = \"category_id\", nullable = false)\r\n   Integer category_id;\r\n+\r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"product_id\",\r\n     referencedColumnName = \"id\",\r\n"
+                },
+                {
+                    "date": 1651503609652,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n   Integer category_id;\r\n \r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n-    name = \"product_id\",\r\n+    name = \"customer_id\",\r\n     referencedColumnName = \"id\",\r\n     foreignKey = @ForeignKey(name = \"FK_cart_productcustomer\"),\r\n     insertable = false,\r\n     updatable = false,\r\n"
+                },
+                {
+                    "date": 1651504097861,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,16 +30,16 @@\n   )\r\n   @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n   Product product;\r\n \r\n-  @column(name = \"category_id\", nullable = false)\r\n-  Integer category_id;\r\n+  @column(name = \"customer_id\", nullable = false)\r\n+  Integer customer_id;\r\n \r\n   @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n   @JoinColumn(\r\n     name = \"customer_id\",\r\n     referencedColumnName = \"id\",\r\n-    foreignKey = @ForeignKey(name = \"FK_cart_productcustomer\"),\r\n+    foreignKey = @ForeignKey(name = \"FK_customer_productcustomer\"),\r\n     insertable = false,\r\n     updatable = false,\r\n     nullable = false\r\n   )\r\n"
+                }
+            ],
+            "date": 1651503507395,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.Model;\r\n\r\nimport javax.persistence.*;\r\nimport lombok.*;\r\n\r\n@Entity\r\n@Table(name = \"productcart\")\r\n@Data\r\n@NoArgsConstructor\r\n@AllArgsConstructor\r\n@Getter\r\n@Setter\r\npublic class ProductCus {\r\n\r\n  @Id\r\n  @GeneratedValue(strategy = GenerationType.IDENTITY)\r\n  Integer id;\r\n\r\n  @column(name = \"product_id\", nullable = false)\r\n  Integer product_id;\r\n\r\n  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n  @JoinColumn(\r\n    name = \"product_id\",\r\n    referencedColumnName = \"id\",\r\n    foreignKey = @ForeignKey(name = \"FK_product_productcart\"),\r\n    insertable = false,\r\n    updatable = false,\r\n    nullable = false\r\n  )\r\n  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n  Product product;\r\n\r\n  @column(name = \"category_id\", nullable = false)\r\n  Integer category_id;\r\n\r\n  @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)\r\n  @JoinColumn(\r\n    name = \"product_id\",\r\n    referencedColumnName = \"id\",\r\n    foreignKey = @ForeignKey(name = \"FK_cart_productcart\"),\r\n    insertable = false,\r\n    updatable = false,\r\n    nullable = false\r\n  )\r\n  @JsonIgnoreProperties(value = { \"applications\", \"hibernateLazyInitializer\" })\r\n  Category category;\r\n}\r\n"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/main/java/io/sfer/xxx/dto/ProductDTO.java",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1651690816864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1651690842858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,16 @@\n package io.sfer.xxx.dto;\r\n \r\n public class ProductDTO {\r\n-  \r\n+  String title;\r\n+Integer chapter;\r\n+Integer page_number;\r\n+String author;\r\n+String publisher;\r\n+String quantity;\r\n+String quality;\r\n+String price;\r\n+String description;\r\n+String image;\r\n+String publish_date;\r\n+Integer seller_id;\r\n }\r\n"
+                },
+                {
+                    "date": 1651690857307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,18 @@\n package io.sfer.xxx.dto;\r\n \r\n public class ProductDTO {\r\n+\r\n   String title;\r\n-Integer chapter;\r\n-Integer page_number;\r\n-String author;\r\n-String publisher;\r\n-String quantity;\r\n-String quality;\r\n-String price;\r\n-String description;\r\n-String image;\r\n-String publish_date;\r\n-Integer seller_id;\r\n+  Integer chapter;\r\n+  Integer page_number;\r\n+  String author;\r\n+  String publisher;\r\n+  String quantity;\r\n+  String quality;\r\n+  String price;\r\n+  String description;\r\n+  String image;\r\n+  String publish_date;\r\n+  Integer seller_id;\r\n+  \r\n }\r\n"
+                },
+                {
+                    "date": 1651690862628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n   String description;\r\n   String image;\r\n   String publish_date;\r\n   Integer seller_id;\r\n-  \r\n+  List<Integer> categories;\r\n }\r\n"
+                },
+                {
+                    "date": 1651690868396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,6 +13,6 @@\n   String description;\r\n   String image;\r\n   String publish_date;\r\n   Integer seller_id;\r\n-  List<Integer> categories;\r\n+  List<Integer> categoryId;\r\n }\r\n"
+                },
+                {
+                    "date": 1651691375199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,15 @@\n package io.sfer.xxx.dto;\r\n \r\n+import lombok.*;\r\n+\r\n+import java.util.List;\r\n+\r\n+@Data\r\n+@NoArgsConstructor\r\n+@AllArgsConstructor\r\n+@Getter\r\n+@Setter\r\n public class ProductDTO {\r\n \r\n   String title;\r\n   Integer chapter;\r\n@@ -13,6 +22,6 @@\n   String description;\r\n   String image;\r\n   String publish_date;\r\n   Integer seller_id;\r\n-  List<Integer> categoryId;\r\n+  ArrList<Integer> categoryIds;\r\n }\r\n"
+                }
+            ],
+            "date": 1651690816864,
+            "name": "Commit-0",
+            "content": "package io.sfer.xxx.dto;\r\n\r\npublic class ProductDTO {\r\n  \r\n}\r\n"
+        }
+    ]
+}
